@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实例数据,事件,方法</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <div @click="handleClick">
+        <h1>{{content}}</h1>
+    </div>
+    <item></item>
+</div>
+<script>
+    Vue.component('item', {
+        template: '<div>hello item</div>'
+    })
+
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            content: 'hello'
+        },
+        methods: {
+            handleClick: function () {
+                this.content = "world"
+            }
+        }
+    })
+</script>
+</body>
+</html>

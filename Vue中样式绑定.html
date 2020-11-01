@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中样式绑定</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+
+</head>
+<body>
+<div id="root">
+    <div class="static" v-bind:class="{active:'isActive','text-danger':hasError}"></div>
+    <div :style="[styleObj,{fontSize:'20px'}]" @click="handleDivClick">Hello World</div>
+    <div v-bind:class="classObject"></div>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#root',
+        data: {
+            isActive: true,
+            hasError: false,
+            error: null,
+            styleObj: {
+                color: "black"
+            }
+        },
+        methods: {
+            handleDivClick: function () {
+                this.styleObj.color = this.styleObj.color === "black" ? "red" : "black"
+            }
+        },
+        computed: {
+            classObject: function () {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type === 'fatal'
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中条件渲染</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <div v-if="show">
+        用户名：<input key="username"/>
+    </div>
+    <div v-else>
+        邮箱名：<input key="email"/>
+    </div>
+    {{msg}}
+    <div v-if="count>0">
+        判断1：count大于0,count的值是：{{count}}
+    </div>
+    <div v-else-if="count<0&&count>-5">
+        判断2：count的值是：{{count}}
+    </div>
+    <div v-else>
+        判断3：count的值是：{{count}}
+    </div>
+    <div v-show="count==-1">show:{{count}}</div>
+    <div v-for="item in list">
+        <div v-if="item.age>18"
+             :class="{'active':true}"
+             :style="style">
+            {{item.name}}
+        </div>
+    </div>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            show: false,
+            msg: 'my name is william',
+            style: {
+                color: 'red',
+            },
+            count: 0,
+            list: [{
+                name: 'william',
+                age: 18
+            }, {
+                name: 'jack',
+                age: 20
+            }]
+        }
+    })
+</script>
+</body>
+</html>

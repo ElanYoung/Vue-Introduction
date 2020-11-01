@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中列表渲染</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <div v-for="(item,index) of userInfo">{{item}}</div>
+</div>
+<script>
+    //push pop shift unshift splice sort reverse
+    var vm = new Vue({
+        el: "#root",
+        data: {
+            userInfo: [1, 2, 3, 4]
+        }
+    })
+</script>
+</body>
+</html>
